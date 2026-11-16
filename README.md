@@ -46,7 +46,7 @@ This simulates the exact workflow a penetration tester follows when auditing pas
 
 Opening the file in the browser PDF viewer immediately prompts for a password, confirming the document is encrypted and cannot be viewed without it.
 
-![Password protected PDF prompt](assets/01-password-protected-pdf.png)
+![Password protected PDF prompt](encrypted_pdf.png)
 
 ---
 
@@ -58,7 +58,7 @@ On Kali Linux, the `pdf2john.py` utility reads the PDF's encryption dictionary a
 pdf2john MyLockedPDF1.pdf > hash.txt
 ```
 
-![pdf2john extracting the hash](assets/02-pdf2john-extract-hash.png)
+![pdf2john extracting the hash](pdf_to_hash.png)
 
 ---
 
@@ -66,7 +66,7 @@ pdf2john MyLockedPDF1.pdf > hash.txt
 
 As a cross-check, the same PDF was uploaded to the **NetworkWalks Hash Calculator** tool (run client-side — the file is parsed locally, nothing is uploaded to a server). It independently extracted the identical `$pdf$...` hash, confirming the encryption parameters: **Revision 4, Version 4, 128-bit key length**.
 
-![NetworkWalks hash calculator output](assets/03-networkwalks-hash-calculator.png)
+![NetworkWalks hash calculator output](pdf_to_hash_by_networkwalks_tool.png)
 
 ---
 
@@ -85,7 +85,7 @@ good-luck        (?)
 1g 0:00:00:05 DONE
 ```
 
-![John the Ripper cracking the password](assets/04-john-the-ripper-crack.png)
+![John the Ripper cracking the password](password.png)
 
 ---
 
@@ -98,7 +98,7 @@ PASSWORD CRACKED SUCCESSFULLY
 good-luck
 ```
 
-![NetworkWalks password match confirmation](assets/05-networkwalks-password-match.png)
+![NetworkWalks password match confirmation](password_matching_by_networkwalks_tool.png)
 
 ---
 
@@ -106,7 +106,7 @@ good-luck
 
 Finally, the recovered password `good-luck` was entered into the original password prompt, and the PDF opened successfully — proving the attack worked end-to-end.
 
-![PDF successfully unlocked](assets/06-pdf-unlocked.png)
+![PDF successfully unlocked](password_found.png)
 
 ---
 
